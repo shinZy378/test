@@ -93,7 +93,6 @@ def login():
 			tokenku.append(token)
 			try:
 				sy = requests.get('https://graph.facebook.com/me?access_token='+tokenku[0])
-				login_lagi()
 			except requests.exceptions.ConnectionError:
 				banner()
 				li = '# KONEKSI INTERNET BERMASALAH'
