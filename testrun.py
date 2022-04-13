@@ -89,15 +89,6 @@ def banner():
 
 class login:
 
-	def __init__(self):
-		self.ada = []
-	def __login__(self):
-		os.system('clear')
-		banner()
-		token = input(' [%s*%s] Masukan token : '%(O,N))
-		if token in ['']:
-			time.sleep(2);login().__login__()
-		else:
 			try:
 				cc = requests.get('https://graph.facebook.com/me?access_token=%s'%(token)).json()['name']
 				open('token.x','w').write(token)
