@@ -89,7 +89,7 @@ def banner():
 
 def login():
 		try:
-			token = open('.token.txt','r')write(token)
+			open('token.x','w').write(token)
 			tokenku.append(token)
 			try:
 				sy = requests.get('https://graph.facebook.com/me?access_token='+tokenku[0])
