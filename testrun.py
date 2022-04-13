@@ -87,26 +87,32 @@ def banner():
                                     
 	
 
-def login():
-		try:
-			open('token.x','w').write(token)
-			tokenku.append(token)
+class login:
+
+	def __init__(self):
+		self.ada = []
+	def __login__(self):
+		os.system('clear')
+		banner()
+		token = input(' [%s*%s] Masukan token : '%(O,N))
+		if token in ['']:
+			time.sleep(2);login().__login__()
+		else:
 			try:
-				sy = requests.get('https://graph.facebook.com/me?access_token='+tokenku[0])
-				sy2 = json.loads(sy.text)['name']
-				sy3 = json.loads(sy.text)['id']
-				sy4 = json.loads(sy.text)['birthday']
-				menu(sy2,sy3,sy4)
+				cc = requests.get('https://graph.facebook.com/me?access_token=%s'%(token)).json()['name']
+				open('token.x','w').write(token)
+				print('\n [%s+%s] Login berhasil %s'%(H,N,cc))
+				self.bot()
 			except KeyError:
-				login_lagi()
-			except requests.exceptions.ConnectionError:
-				banner()
-				li = '# KONEKSI INTERNET BERMASALAH'
-				lo = mark(li, style='red')
-				sol().print(lo, style='cyan')
-				exit()
-		except IOError:
-			login_lagi()
+				jalan(' [%s!%s] Token error coba ganti akun tumbal!'%(M,N))
+				self.takon()
+	def takon(self):
+		takon = input('\n %s[%s!%s] Mau tau cara ambil token y/t: '%(N,O,N))
+		if takon in ['y','Y','iya']:
+			jalan('\n %s[%s!%s] Kamu akan di arahkan ke Ke Wa Untuk Donasi'%(N,O,N))
+			os.system('xdg-open wa.me/6285740559154');exit()
+		else:
+			login().__login__()
 
 def login_lagi():
 	banner()
