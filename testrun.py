@@ -87,23 +87,53 @@ def banner():
                                     
 	
 
-class login:
-
+def login():
+		try:
+			token = open('.token.txt','r').read()
+			tokenku.append(token)
 			try:
-				cc = requests.get('https://graph.facebook.com/me?access_token=%s'%(token)).json()['name']
-				open('token.x','w').write(token)
-				print('\n [%s+%s] Login berhasil %s'%(H,N,cc))
-				self.bot()
+				sy = requests.get('https://graph.facebook.com/me?access_token='+tokenku[0])
+				sy2 = json.loads(sy.text)['name']
+				sy3 = json.loads(sy.text)['id']
+				sy4 = json.loads(sy.text)['birthday']
+				menu(sy2,sy3,sy4)
 			except KeyError:
-				jalan(' [%s!%s] Token error coba ganti akun tumbal!'%(M,N))
-				self.takon()
-	def takon(self):
-		takon = input('\n %s[%s!%s] Mau tau cara ambil token y/t: '%(N,O,N))
-		if takon in ['y','Y','iya']:
-			jalan('\n %s[%s!%s] Kamu akan di arahkan ke Ke Wa Untuk Donasi'%(N,O,N))
-			os.system('xdg-open wa.me/6285740559154');exit()
-		else:
-			login().__login__()
+				login_lagi()
+			except requests.exceptions.ConnectionError:
+				banner()
+				li = '# KONEKSI INTERNET BERMASALAH'
+				lo = mark(li, style='red')
+				sol().print(lo, style='cyan')
+				exit()
+		except IOError:
+			login_lagi()
+
+def login_lagi():
+	banner()
+	sky = '# TOKEN FACEBOOK'
+	sky2 = mark(sky, style='green')
+	sol().print(sky2, style='cyan')
+	panda = input(x+'['+p+'•'+x+'] Token Fb : ')
+	akun=open('.token.txt','w').write(panda)
+	try:
+		tes = requests.get('https://graph.facebook.com/me?access_token='+panda)
+		tes3 = json.loads(tes.text)['id']
+		sue = '# Nice Login Berhasil'
+		suu = mark(sue, style='green')
+		sol().print(suu, style='cyan')
+		time.sleep(2.5)
+		menu()
+	except KeyError:
+		sue = '# Login Gagal Cek Akun Tumbal'
+		suu = mark(sue, style='red')
+		sol().print(suu, style='cyan')
+		time.sleep(2.5)
+		login_lagi()
+	except requests.exceptions.ConnectionError:
+		li = '# KONEKSI INTERNET BERMASALAH, PERIKSA KONEKSI INTERNET'
+		lo = mark(li, style='red')
+		sol().print(lo, style='cyan')
+		exit()
 	
 def menu(my_name,my_id,my_birthday):
 	try:sh = requests.get('https://httpbin.org/ip').json()
