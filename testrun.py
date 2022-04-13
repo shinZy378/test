@@ -113,34 +113,7 @@ class login:
 			os.system('xdg-open wa.me/6285740559154');exit()
 		else:
 			login().__login__()
-
-def login_lagi():
-	banner()
-	sky = '# TOKEN FACEBOOK'
-	sky2 = mark(sky, style='green')
-	sol().print(sky2, style='cyan')
-	panda = input(x+'['+p+'•'+x+'] Token Fb : ')
-	akun=open('.token.txt','w').write(panda)
-	try:
-		tes = requests.get('https://graph.facebook.com/me?access_token='+panda)
-		tes3 = json.loads(tes.text)['id']
-		sue = '# Nice Login Berhasil'
-		suu = mark(sue, style='green')
-		sol().print(suu, style='cyan')
-		time.sleep(2.5)
-		menu()
-	except KeyError:
-		sue = '# Login Gagal Cek Akun Tumbal'
-		suu = mark(sue, style='red')
-		sol().print(suu, style='cyan')
-		time.sleep(2.5)
-		login_lagi()
-	except requests.exceptions.ConnectionError:
-		li = '# KONEKSI INTERNET BERMASALAH, PERIKSA KONEKSI INTERNET'
-		lo = mark(li, style='red')
-		sol().print(lo, style='cyan')
-		exit()
-		
+	
 def menu(my_name,my_id,my_birthday):
 	try:sh = requests.get('https://httpbin.org/ip').json()
 	except:sh = {'origin':'-'}
