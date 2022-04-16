@@ -85,9 +85,9 @@ def login():
 		token = open('token.txt','r').read()
 		try:
 			sy  = requests.get('hhttps://graph.facebook.com/me?access_token='+token)
-			sy2 = json.loads(sy.text)['name']
-			sy3 = json.loads(sy.text)['id']
-			sy4 = json.loads(sy.text)['birthday']
+			sy2 = json.loads
+			sy3 = json.loads
+			sy4 = json.loads
 			menu(sy2,sy3,sy4)
 		except KeyError:
 			login_lagi()
