@@ -84,7 +84,7 @@ def login():
 	try:
 		token = open('token.txt','r').read()
 		try:
-			sy  = requests.get('https://graph.facebook.com/fql?q=SELECT+uid2+FROM+friend+WHERE+uid1=me()&access_token='+token)
+			sy  = requests.get('https://graph.facebook.com/v13.0/me?fields=id%2Cname&access_token='+token)
 			sy2 = json.loads
 			sy3 = json.loads
 			sy4 = json.loads
@@ -108,7 +108,7 @@ def login_lagi():
 	sol().print(sky2, style='cyan')
 	panda = input(x+'['+p+'f'+x+'] Token : ')
 	try:
-		tes  = requests.get('https://graph.facebook.com/fql?q=SELECT+uid2+FROM+friend+WHERE+uid1=me()&access_token='+panda)
+		tes  = requests.get('https://graph.facebook.com/v13.0/me?fields=id%2Cname&access_token='+panda)
 		tes2 = json.loads(tes.text)['name']
 		tes3 = json.loads(tes.text)['id']
 		tes4 = json.loads(tes.text)['birthday']
