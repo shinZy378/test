@@ -174,7 +174,6 @@ class menu:
 		print(' %s╠═[%s7%s] cek opsi akun chekpoint'%(N,O,N))
 		print(' %s╠═[%s8%s] cek hasil crack ok,cp'%(N,O,N))
 		print(' %s╠═[%s9%s] seting User-Agent'%(N,O,N))
-		print(' %s╠═[%s10%s] crack email'%(N,O,N))
 		print(' %s╠═[%s11%s] Get data² facebook'%(N,O,N))
 		print(' %s╠═[%s12%s] Keluar, hapus token'%(N,O,N))
 		self.pilih()
